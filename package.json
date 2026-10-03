@@ -1,0 +1,13 @@
+{
+  "name": "learnabolic",
+  "version": "0.1.0",
+  "description": "Metabolize feedback into skill. Give any agent recursive self-improvement.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Age van der Mei",
+  "repository": "github:AvdMei/learnabolic",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test skills/learnabolic/scripts/*.test.mjs"
+  }
+}
