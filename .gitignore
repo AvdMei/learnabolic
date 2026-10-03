@@ -1,3 +1,5 @@
 node_modules
 .learnabolic
 learned
+.claude/skills/
+skills-lock.json
