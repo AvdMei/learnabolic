@@ -6,8 +6,24 @@
   "license": "MIT",
   "author": "Age van der Mei",
   "repository": "github:AvdMei/learnabolic",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "test": "node --test skills/learnabolic/scripts/*.test.mjs"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test skills/learnabolic/scripts/*.test.mjs lib/*.test.ts"
+  },
+  "dependencies": {
+    "next": "^16.3.8",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
   }
 }

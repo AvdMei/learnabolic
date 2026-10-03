@@ -3,3 +3,7 @@ node_modules
 learned
 .claude/skills/
 skills-lock.json
+.next
+.vercel
+next-env.d.ts
+*.tsbuildinfo

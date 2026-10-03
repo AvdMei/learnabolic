@@ -1,0 +1,82 @@
+/*
+  Design notes — derived from sundai-cph-talk (app/globals.css, app/layout.tsx, components/retro/*, deck layouts).
+  1. A retro Mac desktop laid on lab paper: warm off-white paper with a faint 24px dot grid.
+  2. Content lives in "windows": near-white panes, 2px ink border, square corners, a hard 6px ink shadow, no blur.
+  3. Window title bars are thin horizontal ink stripes with a square close box; the title sits on a paper chip.
+  4. One signal colour only: Danish-flag red. It marks what matters now (champion, promotion, kicker, cursor).
+  5. Everything else is ink in three tiers (ink, muted, hairline); pastels from the Sundai logo are tiny accents.
+  6. Type is all monospace: Press Start 2P for display (one weight, never bold), IBM Plex Mono for reading.
+  7. Kickers are small, uppercase, widely tracked and red; section numbers read "§ 03" with § in Plex Mono.
+  8. Controls are pixel blocks: ink-filled primary buttons with a hard 3px shadow; active items invert to ink.
+  9. Quantities show as pixel notches and bars: red for the champion, grey hairline for the rejected.
+  10. Motion is sparse and stepped (a 1.1s blinking block cursor); nothing glides that could simply snap.
+*/
+:root {
+  /* palette */
+  --paper: #f5f3ee;
+  --window: #fffdf8;
+  --ink: #16161a;
+  --ink-muted: #5e5d58;
+  --hairline: #d6d3ca;
+  --dot: #cdc9be;
+  --signal: #c8102e;
+  --pastel-yellow: #edb85a;
+  --pastel-pink: #d878a8;
+  --pastel-lilac: #9888b8;
+  --pastel-blue: #8090c0;
+  --dill-green: #7fa88a;
+  /* semantic */
+  --accent: var(--signal);
+  --promote: var(--signal);
+  --reject: var(--ink-muted);
+  --diff-add: color-mix(in srgb, var(--dill-green) 30%, var(--window));
+  --diff-del: color-mix(in srgb, var(--signal) 14%, var(--window));
+
+  /* type */
+  --font-display: var(--font-press-start), "Courier New", monospace;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --step--2: 11px;
+  --step--1: 13px;
+  --step-0: 15px;
+  --step-1: 19px;
+  --step-2: clamp(18px, 2.6vw, 26px);
+  --step-3: clamp(20px, 3.6vw, 40px);
+  --step-4: clamp(28px, 7.5vw, 64px);
+  --tracking-kicker: 0.16em;
+  --leading-display: 1.3;
+  --leading-body: 1.55;
+
+  /* spacing rhythm (4px base) */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+  --page-max: 1120px;
+  --gutter: clamp(16px, 4vw, 64px);
+
+  /* radii, borders, shadows */
+  --radius: 0;
+  --border: 2px solid var(--ink);
+  --border-hair: 1px solid var(--hairline);
+  --shadow-hard: 6px 6px 0 0 var(--ink);
+  --shadow-hard-sm: 3px 3px 0 0 var(--ink);
+
+  /* motion */
+  --dur-snap: 120ms;
+  --dur-fast: 200ms;
+  --dur-fade: 600ms;
+  --dur-slow: 1000ms;
+  --ease-snap: cubic-bezier(0.3, 1.6, 0.5, 1);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --blink: 1.1s steps(1) infinite;
+
+  /* signature motifs */
+  --dot-grid: radial-gradient(circle, var(--dot) 1.1px, transparent 1.3px);
+  --dot-grid-size: 24px 24px;
+  --title-stripes: repeating-linear-gradient(to bottom, var(--ink) 0 1.5px, transparent 1.5px 4px);
+}
