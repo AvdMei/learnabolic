@@ -606,10 +606,10 @@ input {
   min-height: calc(100svh - 44px);
 }
 
+/* The live curve sits in its own band below the hero copy, never behind the buttons. */
 .hero-trace {
-  position: absolute;
-  inset: 38% 0 6% 0;
-  opacity: 0.22;
+  height: clamp(110px, 20vh, 200px);
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -1362,5 +1362,151 @@ main > .section:last-child {
   .reel-foot {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ---- Section 2: actionable steps ---- */
+.howto h3 {
+  font: 400 var(--step-0) / 1.4 var(--font-display);
+}
+
+.howto blockquote {
+  margin: 0;
+  padding: var(--s3) var(--s4);
+  border-left: 3px solid var(--signal);
+  background: var(--window);
+  font-size: var(--step-1);
+  font-style: italic;
+}
+
+.howto code,
+.apps code {
+  padding: 1px 4px;
+  background: var(--window);
+  border: var(--border-hair);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+}
+
+.score-ways {
+  display: grid;
+  gap: var(--s2);
+  margin: 0;
+}
+
+.score-ways dt {
+  font-weight: 600;
+  color: var(--signal);
+}
+
+.score-ways dd {
+  margin: 0 0 var(--s2);
+}
+
+/* ---- Section 3: the loop in four steps + application examples ---- */
+.loop4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s5);
+  padding: 0;
+  list-style: none;
+  counter-reset: loop;
+}
+
+.loop4 li {
+  position: relative;
+  counter-increment: loop;
+  padding: var(--s4);
+  border: var(--border);
+  background: var(--window);
+  box-shadow: var(--shadow-hard-sm);
+  font-size: var(--step--1);
+}
+
+.loop4 b {
+  display: block;
+  margin-bottom: var(--s2);
+  font: 400 var(--step-0) / 1.3 var(--font-display);
+}
+
+.loop4 b::before {
+  content: counter(loop) " ";
+  color: var(--signal);
+}
+
+.loop4 li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: calc(-1 * var(--s5) + 2px);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--signal);
+}
+
+.apps {
+  width: 100%;
+  border-collapse: collapse;
+  border: var(--border);
+  background: var(--window);
+  box-shadow: var(--shadow-hard);
+  font-size: var(--step--1);
+}
+
+.apps th,
+.apps td {
+  padding: var(--s2) var(--s3);
+  border-bottom: var(--border-hair);
+  text-align: left;
+  vertical-align: top;
+}
+
+.apps thead th {
+  border-bottom: var(--border);
+  font: 400 10px/1.6 var(--font-display);
+  text-transform: uppercase;
+}
+
+.apps tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.apps .add {
+  color: var(--good-text);
+}
+
+@media (max-width: 900px) {
+  .loop4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .loop4 li::after {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .loop4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .apps thead {
+    display: none;
+  }
+  .apps,
+  .apps tbody,
+  .apps tr,
+  .apps th,
+  .apps td {
+    display: block;
+  }
+  .apps tr {
+    border-bottom: var(--border);
+  }
+  .apps td {
+    border: 0;
+    padding-top: 0;
+  }
+  .apps td::before {
+    content: attr(data-label) ": ";
+    color: var(--ink-muted);
   }
 }

@@ -16,7 +16,7 @@ const plexMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Learnabolic · metabolize feedback into skill',
+  title: 'Learnabolic · give AI agents (recursive) self-improvement',
   description: 'Give any agent skill recursive self-improvement. The LLM proposes, statistics disposes.',
 };
 
