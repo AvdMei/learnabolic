@@ -1,7 +1,7 @@
 node_modules
 .learnabolic
 learned
-.claude/skills/
+.claude/
 skills-lock.json
 .next
 .vercel
