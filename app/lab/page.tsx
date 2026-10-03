@@ -9,6 +9,7 @@ export default function LabPage() {
       <header className="lab-head">
         <p className="kicker">Learnabolic · Lab</p>
         <h1 className="display cursor">Watch it learn</h1>
+        <p><a href="/#reel">See a real CLI run replayed →</a></p>
       </header>
       <Lab />
     </main>

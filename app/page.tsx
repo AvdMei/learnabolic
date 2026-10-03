@@ -3,9 +3,9 @@ import { CopyCommand } from '@/components/CopyCommand';
 import { LabTeaser, ShareBrainLink } from '@/components/Lab';
 import { HeroGen, HeroTrace, InstrumentCards, SteeringDemo } from '@/components/LiveLandingWidgets';
 import { ProposeDisposeStage } from '@/components/ProposeDisposeStage';
+import { Reel } from '@/components/Reel';
 import { ScoreMorph, SCORES } from '@/components/ScoreMorph';
 import { Section, Window } from '@/components/Section';
-import { Terminal } from '@/components/Terminal';
 import { envs } from '@/envs/index';
 import { sim } from '@/envs/sim/index';
 import { createLoop } from '@/lib/loop';
@@ -96,7 +96,8 @@ export default async function Home() {
             <li><em>&ldquo;tell your agent: track my commit-message skill with learnabolic&rdquo;</em></li>
             <li>score things: 👍, 0–10, ms, tests passed</li>
           </ol>
-          <Terminal />
+          <p className="caption">A real run, replayed. You only rate; the statistics decide.</p>
+          <Reel />
         </Section>
 
         <Section n={10} kicker="coming next" title="More worlds to learn in.">

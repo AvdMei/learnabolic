@@ -1018,3 +1018,349 @@ main > .section:last-child {
   font-size: var(--step-1);
   font-style: italic;
 }
+
+/* ---- Reel: a recorded CLI run, replayed (components/Reel.tsx) ---- */
+.reel {
+  display: grid;
+  gap: var(--s3);
+}
+
+.reel-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--s5);
+  height: 600px;
+}
+
+.reel-stage .window {
+  min-height: 0;
+  transition: outline-color var(--dur-fade) var(--ease-out);
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+}
+
+.reel-stage .window.spot {
+  outline-color: var(--signal);
+}
+
+/* Desktop: the caption floats over the panels' bottom edge, so keep the newest lines above it. */
+.reel-stage .window-body {
+  padding-bottom: 112px;
+}
+
+.reel-chat .window-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--s2);
+  overflow: hidden;
+  padding: var(--s3);
+}
+
+.reel-msg {
+  max-width: 92%;
+  padding: 8px 11px;
+  font-size: var(--step--1);
+  overflow-wrap: anywhere;
+  animation: reel-in 300ms var(--ease-out);
+}
+
+.reel-msg.user {
+  align-self: flex-end;
+  min-height: 2.2em;
+  background: var(--ink);
+  color: var(--window);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.reel-msg.claude {
+  align-self: flex-start;
+  border: var(--border-hair);
+  background: var(--paper);
+}
+
+.reel-msg.claude b:first-child {
+  display: block;
+  font: 400 9px/1.8 var(--font-display);
+  color: var(--ink-muted);
+}
+
+.reel-commit {
+  display: block;
+  margin: 4px 0;
+  padding: 4px 8px;
+  background: var(--window);
+  border: var(--border-hair);
+  font-weight: 500;
+}
+
+.reel-commit .add,
+.reel-commit .del {
+  display: block;
+}
+
+.reel-commit .add,
+.reel-caption .add {
+  color: var(--good-text);
+}
+
+.reel-commit .del {
+  color: var(--signal);
+}
+
+.reel-tool {
+  align-self: stretch;
+  padding: 7px 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 400 12px/1.5 var(--font-mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  animation: reel-in 300ms var(--ease-out);
+}
+
+.reel-tool .cmd,
+.reel-tool .dim {
+  color: var(--on-ink-muted);
+}
+
+.reel-tool .good {
+  color: var(--on-ink-good);
+  font-weight: 600;
+}
+
+.reel-tool .bad {
+  color: var(--on-ink-bad);
+  font-weight: 600;
+}
+
+.reel-tool .prop {
+  color: var(--on-ink-info);
+}
+
+.reel-rating {
+  display: flex;
+  gap: 3px;
+  align-self: flex-end;
+  animation: reel-in 300ms var(--ease-out);
+}
+
+.reel-rating span {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--hairline);
+  background: var(--window);
+  font-size: 11px;
+  color: var(--ink-muted);
+  transition: transform var(--dur-snap) var(--ease-snap), background var(--dur-snap);
+}
+
+.reel-rating span.hit {
+  border-color: var(--ink);
+  background: var(--signal);
+  color: var(--window);
+  transform: scale(1.2);
+}
+
+.reel-brain .window-body {
+  display: grid;
+  gap: var(--s3);
+  align-content: start;
+  overflow: hidden;
+}
+
+.reel-flash {
+  animation: reel-flash 700ms var(--ease-out);
+}
+
+.reel-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s2);
+  font-size: var(--step--2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+.reel-label b {
+  color: var(--ink);
+}
+
+.reel-label .ratchet {
+  vertical-align: -3px;
+}
+
+.reel-skill {
+  min-height: 96px;
+  padding: 8px 10px;
+  border: var(--border-hair);
+  background: var(--paper);
+  font-size: var(--step--1);
+  line-height: 1.6;
+}
+
+.reel-skill div {
+  padding: 0 4px;
+}
+
+.reel-skill .new {
+  background: var(--diff-add);
+  animation: flash var(--dur-fade) var(--ease-out);
+}
+
+.reel-pool {
+  min-height: 84px;
+}
+
+.reel-row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 96px;
+  gap: var(--s2);
+  align-items: center;
+  padding: 4px 0;
+  font-size: 12px;
+  transition: opacity var(--dur-fade) var(--ease-out);
+  animation: reel-in 300ms var(--ease-out);
+}
+
+.reel-row .dir {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ink-muted);
+}
+
+.reel-row .gauge {
+  position: relative;
+  height: 8px;
+  border: 1px solid var(--ink);
+  background: linear-gradient(90deg, var(--diff-del), var(--window) 50%, var(--diff-add));
+}
+
+.reel-row .gauge i {
+  position: absolute;
+  top: -5px;
+  width: 3px;
+  height: 16px;
+  margin-left: -1px;
+  background: var(--ink);
+  transition: left 160ms ease-out;
+}
+
+.reel-row.won .gauge i {
+  background: var(--signal);
+}
+
+.reel-row.out {
+  opacity: 0.3;
+}
+
+.reel-tape {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 3px;
+  min-height: 48px;
+}
+
+.reel-tape span {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 20px;
+  border: 1px solid var(--hairline);
+  background: var(--window);
+  font-size: 10px;
+  color: var(--ink-muted);
+}
+
+.reel-tape span.ch {
+  border-color: var(--signal);
+  color: var(--ink);
+}
+
+.reel-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: min(640px, 92%);
+  transform: translateX(-50%);
+  padding: 10px 16px;
+  border: var(--border);
+  border-color: var(--signal);
+  background: var(--window);
+  box-shadow: var(--shadow-hard);
+  pointer-events: none;
+}
+
+.reel-caption small {
+  font: 400 10px/1.6 var(--font-display);
+  color: var(--signal);
+}
+
+.reel-caption p {
+  margin-top: 2px;
+  font-size: var(--step-0);
+}
+
+.reel-progress {
+  height: 4px;
+  border: 1px solid var(--ink);
+  background: var(--window);
+}
+
+.reel-progress i {
+  display: block;
+  height: 100%;
+  background: var(--signal);
+  transition: width 200ms linear;
+}
+
+.reel-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s4);
+  font-size: var(--step--2);
+  color: var(--ink-muted);
+}
+
+@keyframes reel-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes reel-flash {
+  30% {
+    box-shadow: var(--shadow-hard), 0 0 0 4px var(--signal);
+  }
+}
+
+@media (max-width: 760px) {
+  .reel-stage {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+  }
+  .reel-chat .window-body {
+    height: 360px;
+  }
+  .reel-stage .window-body {
+    padding-bottom: var(--s3);
+  }
+  .reel-caption {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+  .reel-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

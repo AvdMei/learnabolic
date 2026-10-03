@@ -31,6 +31,12 @@
   --reject: var(--ink-muted);
   --diff-add: color-mix(in srgb, var(--dill-green) 30%, var(--window));
   --diff-del: color-mix(in srgb, var(--signal) 14%, var(--window));
+  --good-text: #2f6b3e; /* dill green, darkened for text on paper */
+  /* text on ink (terminal panes): signal red and dill green are too dark there, so use lifted versions */
+  --on-ink-muted: #a9a69d;
+  --on-ink-good: #9fd3a8;
+  --on-ink-bad: #ff7a88;
+  --on-ink-info: #a9b6e6;
 
   /* type */
   --font-display: var(--font-press-start), "Courier New", monospace;
